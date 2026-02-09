@@ -1,20 +1,26 @@
 #!/bin/bash
 
-echo "Starting Sri Lankan Phone Tracker..."
+echo "🚀 Starting Advanced Sri Lankan Phone Tracker..."
 echo ""
 
-# Check if script exists
-if [ ! -f "sl_tracker.py" ]; then
-    echo "❌ Error: sl_tracker.py not found!"
-    echo "Please make sure you're in the correct directory."
+cd "$(dirname "$0")"
+
+# Check for virtual environment
+if [ ! -d "venv" ]; then
+    echo "Virtual environment not found!"
+    echo "Running installer..."
+    chmod +x install_advanced.sh
+    ./install_advanced.sh
+fi
+
+# Activate virtual environment
+source venv/bin/activate
+
+# Check for main script
+if [ ! -f "sl_tracker_advanced.py" ]; then
+    echo "Error: Main script not found!"
     exit 1
 fi
 
-# Check Python
-if ! command -v python3 &> /dev/null; then
-    echo "❌ Python3 not found!"
-    exit 1
-fi
-
-# Run the tracker
-python3 sl_tracker.py
+# Run
+python sl_tracker_advanced.py
