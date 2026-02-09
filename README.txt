@@ -1,40 +1,26 @@
-============================================
-SRI LANKAN PHONE NUMBER TRACKER
-============================================
+# 🇱🇰 Advanced Sri Lankan Phone Tracker
 
-📌 Description:
-A Python tool to validate and get information about Sri Lankan phone numbers.
+## 🌟 New Features
+- **Real Geolocation** using OpenCage/Google Maps data
+- **Exact addresses** with street names, cities, postal codes
+- **Interactive maps** with clickable markers
+- **Google Maps links** for quick navigation
+- **Coordinates** (latitude/longitude)
+- **Save results** to files
 
-📌 Features:
-- Validate Sri Lankan mobile numbers
-- Identify operators (Mobitel, Dialog, Airtel, Hutch)
-- Show location and timezone
-- Simple command-line interface
-- No API key required
+## 📋 Requirements
+1. OpenCage API Key (FREE - 2500 requests/day)
+   - Sign up: https://opencagedata.com/api
+   - No credit card required
 
-📌 Installation:
-1. Open terminal in this folder
-2. Run: chmod +x install.sh
-3. Run: ./install.sh
+## 🚀 Quick Start
 
-📌 Usage:
-Run: ./sl_tracker.py
+### Installation:
+```bash
+# 1. Clone/Copy files
+# 2. Run installer
+chmod +x install_advanced.sh
+./install_advanced.sh
 
-Enter phone numbers when prompted:
-Examples:
-  +94701234567
-  94701234567
-  0701234567
-  070-123-4567
-
-📌 Operators:
-- Mobitel: 70, 71, 81
-- Dialog: 72, 74, 76
-- Airtel: 75
-- Hutch: 77, 78
-
-⚠️ LEGAL NOTICE:
-FOR EDUCATIONAL PURPOSES ONLY.
-Use only with numbers you own or have permission to check.
-
-============================================
+# 3. Run tracker
+./run_advanced.sh
