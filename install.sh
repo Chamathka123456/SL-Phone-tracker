@@ -1,46 +1,56 @@
 #!/bin/bash
 
 echo ""
-echo "╔══════════════════════════════════════════════╗"
-echo "║   Sri Lankan Phone Tracker - Installation    ║"
-echo "╚══════════════════════════════════════════════╝"
+echo "╔══════════════════════════════════════════════════╗"
+echo "║   Advanced Sri Lankan Phone Tracker Installer    ║
+echo "║     With Real Geolocation & Google Maps          ║"
+echo "╚══════════════════════════════════════════════════╝"
 echo ""
+
+cd "$(dirname "$0")"
 
 # Check Python
 if ! command -v python3 &> /dev/null; then
-    echo "❌ Python3 not found!"
     echo "Installing Python3..."
     sudo apt update
-    sudo apt install -y python3 python3-pip
-    echo "✅ Python3 installed"
-else
-    echo "✅ Python3 is installed"
+    sudo apt install -y python3 python3-venv python3-pip
 fi
 
-# Install pip if not present
-if ! command -v pip3 &> /dev/null; then
-    echo "Installing pip3..."
-    sudo apt install -y python3-pip
-fi
+# Create virtual environment
+echo "Creating virtual environment..."
+python3 -m venv venv 2>/dev/null || {
+    sudo apt install -y python3-venv
+    python3 -m venv venv
+}
 
-# Install required package
-echo "Installing required package: phonenumbers..."
-pip3 install phonenumbers --user
+# Activate
+source venv/bin/activate
 
-# Make main script executable
-chmod +x sl_tracker.py
+# Install packages
+echo "Installing required packages..."
+pip install phonenumbers folium opencage requests
+
+# Make scripts executable
+chmod +x sl_tracker_advanced.py
 
 echo ""
-echo "══════════════════════════════════════════════"
+echo "══════════════════════════════════════════════════"
 echo "✅ Installation Complete!"
 echo ""
-echo "To run the tracker:"
-echo "   ./sl_tracker.py"
+echo "To run the advanced tracker:"
+echo "   source venv/bin/activate"
+echo "   python sl_tracker_advanced.py"
 echo ""
-echo "Or using Python directly:"
-echo "   python3 sl_tracker.py"
+echo "📋 IMPORTANT: You need an OpenCage API key:"
+echo "   1. Visit: https://opencagedata.com/api"
+echo "   2. Sign up for FREE account"
+echo "   3. Get API key (2500 requests/day free)"
+echo "   4. Enter when prompted"
 echo ""
-echo "Enter Sri Lankan phone numbers when prompted."
-echo "Examples: +94701234567 or 0701234567"
-echo "══════════════════════════════════════════════"
+echo "📍 Features:"
+echo "   • Real addresses from Google Maps data"
+echo "   • Exact coordinates (latitude/longitude)"
+echo "   • Interactive maps"
+echo "   • Google Maps & OpenStreetMap links"
+echo "══════════════════════════════════════════════════"
 echo ""
